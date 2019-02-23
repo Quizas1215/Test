@@ -10,6 +10,7 @@
 		09196F0C221EE4EA0089E77A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09196F0B221EE4EA0089E77A /* AppDelegate.swift */; };
 		09196F13221EE4EB0089E77A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09196F12221EE4EB0089E77A /* Assets.xcassets */; };
 		09196F16221EE4EB0089E77A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09196F14221EE4EB0089E77A /* LaunchScreen.storyboard */; };
+		095D97D222212D8400205D04 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 095D97D022212D8400205D04 /* Home.storyboard */; };
 		09966262222122A200D74A90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09966261222122A200D74A90 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -19,6 +20,7 @@
 		09196F12221EE4EB0089E77A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09196F15221EE4EB0089E77A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09196F17221EE4EB0089E77A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		095D97D122212D8400205D04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		09966261222122A200D74A90 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				09966261222122A200D74A90 /* Main.storyboard */,
+				095D97D022212D8400205D04 /* Home.storyboard */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				09966262222122A200D74A90 /* Main.storyboard in Resources */,
 				09196F16221EE4EB0089E77A /* LaunchScreen.storyboard in Resources */,
 				09196F13221EE4EB0089E77A /* Assets.xcassets in Resources */,
+				095D97D222212D8400205D04 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +205,14 @@
 				09196F15221EE4EB0089E77A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		095D97D022212D8400205D04 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				095D97D122212D8400205D04 /* Base */,
+			);
+			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
