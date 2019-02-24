@@ -7,27 +7,64 @@
 //
 
 import UIKit
+private let  KTitleViewH: CGFloat = 40
 
 class HomeViewController: UIViewController {
-
+    //
+    private lazy var  pageTitleView: PageTitleView = {
+        
+        let titleFrame = CGRect(x: 0, y: kStatusBarH+kNavgationBarH, width: kScreenW, height: KTitleViewH)
+        let titles = ["推荐","推荐","娱乐","趣玩"]
+        let titleView = PageTitleView(frame: titleFrame, titles: titles)
+        //titleView.backgroundColor = UIColor.purple
+        return  titleView
+    }()
+    private lazy var pageContentView: PageContentView = {
+        // 1.确定内容的Frame
+        let ContentH =  kScreenH - kStatusBarH - kNavgationBarH - KTitleViewH
+        let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavgationBarH + KTitleViewH, width: kScreenW, height: ContentH)
+        // 2.确定所有的子控制器
+        var childVcs = [UIViewController]()
+        
+        for _ in 0..<4 {
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g:  CGFloat(arc4random_uniform(255)), b:  CGFloat(arc4random_uniform(255)), alpha: 1.0)
+            childVcs.append(vc)
+        }
+        let ContentView =  PageContentView(frame: contentFrame, childVcs: childVcs, parentViewController: self)
+        return ContentView
+    }()
+    
+    
+    // 系统回调用函数
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //设置UI界面
         setupUI()
+        
       
     }
-
- 
-
+    
 }
 
 //Mark- 设置UI界面
 extension HomeViewController {
     private func setupUI(){
+        //0.
+        automaticallyAdjustsScrollViewInsets = false
         //1.设置导航栏
         setupNavigationBar()
-            
+
+        //2.添加TitleView
+        view.addSubview(pageTitleView)
+        
+        //3.添加ContentView
+        view.addSubview(pageContentView)
+        pageContentView.backgroundColor = UIColor.purple
+ 
     }
+    
     private func setupNavigationBar(){
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(ImageName: "logo")
