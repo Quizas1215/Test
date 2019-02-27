@@ -10,16 +10,16 @@ import UIKit
 private let  KTitleViewH: CGFloat = 40
 
 class HomeViewController: UIViewController {
-    //
-    private lazy var  pageTitleView: PageTitleView = {
-        
+    //懒加载属性
+    private lazy var  pageTitleView: PageTitleView = {[weak self] in
         let titleFrame = CGRect(x: 0, y: kStatusBarH+kNavgationBarH, width: kScreenW, height: KTitleViewH)
         let titles = ["推荐","推荐","娱乐","趣玩"]
         let titleView = PageTitleView(frame: titleFrame, titles: titles)
+        titleView.delegate = self
         //titleView.backgroundColor = UIColor.purple
         return  titleView
     }()
-    private lazy var pageContentView: PageContentView = {
+    private lazy var pageContentView: PageContentView = {[weak self] in
         // 1.确定内容的Frame
         let ContentH =  kScreenH - kStatusBarH - kNavgationBarH - KTitleViewH
         let contentFrame = CGRect(x: 0, y: kStatusBarH + kNavgationBarH + KTitleViewH, width: kScreenW, height: ContentH)
@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
             childVcs.append(vc)
         }
         let ContentView =  PageContentView(frame: contentFrame, childVcs: childVcs, parentViewController: self)
+        ContentView.delegate = self as! PageContentViewDelegate
         return ContentView
     }()
     
@@ -96,10 +97,16 @@ extension HomeViewController {
 //                qrcodeBtn.setBackgroundImage(UIImage(named: "Image_scan_clicked"), for: .highlighted)
 //                qrcodeBtn.frame = CGRect(origin:  CGPoint.zero, size: size)
 //                let qrcodeItem = UIBarButtonItem(customView: qrcodeBtn)
-        
-        
-        
-        
     }
     
+}
+extension HomeViewController: PageTitleViewDelegate {
+    func pageTitleView(titleView: PageTitleView, selectedIndex index: Int) {
+        pageContentView.setCurrentIndex( currentIndex: index)
+    }
+}
+extension HomeViewController: PageContentViewDelegate {
+    func pageContentView(contentView: PageContentView, progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        pageTitleView.setTitleWithProgress(progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+    }
 }
